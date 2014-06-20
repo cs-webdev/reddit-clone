@@ -35,7 +35,7 @@ gem 'jquery-rails'
 
 group :development, :test do
 	gem 'capybara'
-	gem 'capybara-webkit'
+	#gem 'capybara-webkit'
   gem 'rspec-rails'
 end
 

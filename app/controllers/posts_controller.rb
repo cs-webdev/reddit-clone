@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authorize, :except => [:index]
+
   def index
     @posts = Post.all
 	end

@@ -6,7 +6,9 @@ env:
   - "RAILS_VERSION=4.0"
   - "RAILS_VERSION=4.1"
   - "RAILS_VERSION=master"
-script: bundle exec rspec spec
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate
+  - bundle exec rspec spec
 matrix:
   allow_failures:
     - rvm: ruby-head

@@ -7,7 +7,7 @@ feature 'create post:'  do
     fill_in 'Body', with: 'body of post'
     click_on 'Create Post'
 
-    expect(current_path).to eq posts_path
+    expect(page).to have_content 'title of post'
   end
 
 end

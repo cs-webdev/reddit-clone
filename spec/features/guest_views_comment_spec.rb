@@ -3,7 +3,15 @@ require 'rails_helper'
 feature 'Guest views comments' do
   scenario 'in homepage' do
     Comment.create body: 'my comment', upvotes: 0, downvotes: 0
+    user = User.create email: 'email@email.com', password: 'passTeste'
     visit root_path
+	
+	within 'form' do
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+
+      click_on 'Sign in'
+    end
 
     expect(page).to have_text 'my comment'
   end

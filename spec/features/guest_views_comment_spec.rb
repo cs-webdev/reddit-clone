@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-feature 'Guest views comments'  do
+feature 'Guest views comments' do
   scenario 'in homepage' do
-    Post.create title: 'first comment', body: 'content'
+    Comment.create body: 'my comment', upvotes: 0, downvotes: 0
     visit root_path
 
-    expect(page).to have_text 'first comment'
+    expect(page).to have_text 'my comment'
   end
 
 end

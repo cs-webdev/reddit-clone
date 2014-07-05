@@ -33,6 +33,9 @@ gem 'jquery-rails'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Rails authentication with email & password.
+gem 'clearance'
+
 group :development, :test do
 	gem 'capybara'
 	#gem 'capybara-webkit'

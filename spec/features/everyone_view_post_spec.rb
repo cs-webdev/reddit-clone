@@ -4,7 +4,6 @@ feature 'Guest view'  do
   scenario 'one post' do
     user = User.create email: 'email@email.com', password: 'passTeste'
     post = Post.create title: 'first post', body: 'content of post'
-    
     visit post_path post
 
     within 'form' do

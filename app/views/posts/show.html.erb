@@ -1,7 +1,17 @@
-<h1>
-  <%= @post.title %>
-</h1>
-
+<h1><%= @post.title %></h1>
 <p>
   <%= @post.body %>
 </p>
+
+<h2>Comments</h2>
+<ul>
+	<% @comments.each do |comment| %>
+		<li><%= comment.body %></li>
+	<% end %>
+</ul>
+<%= form_for @comment do |form| %>
+	<%= hidden_field_tag :post_id, @post.id %>
+	<%= form.text_area :body %>
+
+	<%= form.submit 'Add comment' %>
+<% end %>

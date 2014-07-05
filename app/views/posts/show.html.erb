@@ -1,17 +1,46 @@
-<h1><%= @post.title %></h1>
-<p>
-  <%= @post.body %>
-</p>
 
-<h2>Comments</h2>
-<ul>
-	<% @comments.each do |comment| %>
-		<li><%= comment.body %></li>
-	<% end %>
-</ul>
-<%= form_for @comment do |form| %>
-	<%= hidden_field_tag :post_id, @post.id %>
-	<%= form.text_area :body %>
+<%- model_class = Post -%>
+<div class="page-header">
+  <h1><%= @post.title %></h1>
+</div>
 
-	<%= form.submit 'Add comment' %>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= @post.body %>
+  </div>
+</div>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              posts_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_post_path(@post), :class => 'btn' %>
+</div>
+
+<h4>Comments</h4>
+
+  <%= form_for @comment do |form| %>
+    <%= hidden_field_tag :post_id, @post.id %>
+    <%= form.text_area :body, :class => 'from-control', :rows => '3' %>
+
+    <%= form.submit 'Add comment', :class => 'btn btn-primary' %>
+  <% end %>
+
+<table class="table"> 
+  <% @post.comments.each do |c| %>
+    <tr>
+      <td>
+      <%= c.body %>
+      </td>
+      <td>
+        <span class="glyphicon glyphicon-plus-sign"></span>
+        <%= c.upvotes %>
+      </td>
+      <td>
+        <span class="glyphicon glyphicon-minus-sign"></span>
+        <%= c.downvotes %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+

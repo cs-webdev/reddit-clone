@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 feature 'Guest views comments' do
-  scenario 'in homepage' do
-    post = Post.create title: 'cenas'
-    Comment.create body: 'my comment', upvotes: 0, downvotes: 0, post: post
+
+  scenario 'in a post\'s page' do
+  	post = Post.create title: 'cenas'
+    comment = Comment.create body: 'my comment', upvotes: 0, downvotes: 0, post: post
     user = User.create email: 'email@email.com', password: 'passTeste'
     visit post_path(post)
   
